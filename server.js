@@ -2,7 +2,11 @@ const express = require('express')
 const PORT = 3000
 const app = express()
 const mysql = require('mysql')
+const multer = require('multer')
+const upload = multer()
+const cors = require('cors')
 
+app.use(cors())
 app.use(express.json())
 
 const connection = mysql.createConnection({
@@ -56,7 +60,7 @@ app.get('/clientes/buscar/id/:idcliente', (req, res) => {
   })
 })
 
-app.post('/cliente/gravar', (req, res) => {
+app.post('/cliente/gravar', upload.any(), (req, res) => {
   const nome = req.body.nome
   console.log(nome)
   const telefone = req.body.telefone
@@ -88,7 +92,7 @@ app.post('/cliente/gravar', (req, res) => {
     function (err, result) {
       if (err) throw err
       console.log('Linha adicionada!')
-      res.status(200).send("Adicionado!")
+      res.status(200).send('Adicionado!')
     }
   )
 })
