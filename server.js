@@ -19,7 +19,7 @@ connection.connect(function (err) {
 })
 
 app.get('/tipos', (req, res) => {
-  const query = `SELECT * FROM clientes.tiposdecliente;`
+  const query = `SELECT * FROM tiposdecliente;`
 
   connection.query(query, (err, result) => {
     if (err) {
@@ -32,7 +32,7 @@ app.get('/tipos', (req, res) => {
 
 app.get('/clientes/buscar/email/:email', (req, res) => {
   const email = req.params.email
-  const query = `SELECT * FROM clientes.cliente WHERE email = '${email}';`
+  const query = `SELECT * FROM cliente WHERE email = '${email}';`
 
   connection.query(query, (err, result) => {
     if (err) {
@@ -45,7 +45,7 @@ app.get('/clientes/buscar/email/:email', (req, res) => {
 
 app.get('/clientes/buscar/id/:idcliente', (req, res) => {
   const idcliente = req.params.idcliente
-  const query = `SELECT * FROM clientes.cliente WHERE idcliente = ${idcliente};`
+  const query = `SELECT * FROM cliente WHERE idcliente = ${idcliente};`
 
   connection.query(query, (err, result) => {
     if (err) {
