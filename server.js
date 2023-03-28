@@ -62,7 +62,6 @@ app.get('/clientes/buscar/id/:idcliente', (req, res) => {
 
 app.post('/cliente/gravar', upload.any(), (req, res) => {
   const nome = req.body.nome
-  console.log(nome)
   const telefone = req.body.telefone
   const email = req.body.email
   const idtiposdecliente = req.body.idtiposdecliente
